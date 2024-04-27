@@ -1,0 +1,40 @@
+
+<!-- new data added-->>
+<!-- login.html -->
+
+
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <h2>Login yt</h2>
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        {{ loginform.as_p }}
+        
+        <input type = "submit" value = "Submit">
+     
+  
+    </form>
+    
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

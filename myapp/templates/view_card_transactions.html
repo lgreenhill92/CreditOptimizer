@@ -1,0 +1,42 @@
+{% extends "base_logged_in.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Card Transactions</title>
+</head>
+<body>
+    <h1>Card Transactions for {{ credit_card.card_name }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <!-- Add more columns if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in card_transactions %}
+            <tr>
+                <td>{{ transaction.trans_date }}</td>
+                <td>{{ transaction.trans_amount }}</td>
+                <td>{{ transaction.trans_desc }}</td>
+                <!-- Add more columns if needed -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No transactions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

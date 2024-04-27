@@ -1,0 +1,32 @@
+<!-- register.html -->
+
+
+
+
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2>Register</h2>
+    <form method="POST" autocomplete"off">
+
+        {% csrf_token %}
+
+        {{ registerfrom.as_p }}
+
+
+        <input type="submit" value="Register">
+       
+
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}
