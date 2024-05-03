@@ -20,3 +20,21 @@ class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=forms.PasswordInput())
 
+
+    #TESTING DATA......
+# forms.py
+
+from django import forms
+from .models import CreditCard, Transaction
+
+class CreditCardForm(forms.ModelForm):
+    class Meta:
+        model = CreditCard
+        fields = ['card_number', 'expiry_date', 'cvv']
+
+class TransactionForm(forms.ModelForm):
+    class Meta:
+        model = Transaction
+        fields = ['amount']
+
+

@@ -2,6 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    
+     path('credit-cards/', views.credit_card_management, name='credit_card_management'),
+
+
     path('register/', views.register, name='register'),
     path("",views.home, name="home"),
     path("todos/", views.todos, name = "Todos"),
