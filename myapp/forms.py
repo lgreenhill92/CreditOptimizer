@@ -30,11 +30,28 @@ from .models import CreditCard, Transaction
 class CreditCardForm(forms.ModelForm):
     class Meta:
         model = CreditCard
-        fields = ['card_number', 'expiry_date', 'cvv']
+        fields = ['card_number', 'expiry_date', 'cvv', 'card_name']
 
 class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
         fields = ['amount']
+
+# newfor forms.py
+# from django import forms
+
+# class UploadFileForm(forms.Form):
+#     file = forms.FileField()
+
+from django import forms
+
+class UploadFileForm(forms.Form):
+    file = forms.FileField(
+        label='Select a file',
+        help_text='max. 10 MB',
+        widget=forms.FileInput(attrs={'accept': 'text/csv', 'maxlength': '10MB'})
+    )
+
+
 
 

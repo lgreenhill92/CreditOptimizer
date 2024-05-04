@@ -63,24 +63,63 @@
   <title>Credit Card Management</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .card-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card-item {
+      margin-bottom: 20px;
+    }
+    .card-buttons {
+      margin-left: 10px;
+    }
+    .add-new-card {
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
+  <div class="container">
     <h2>Your Credit Cards</h2>
-    <ul>
+    <ul class="card-list">
       {% for card in user_credit_cards %}
-      <li>{{ card.card_number }}</li>
+      <li class="card-item">
+        {{ card.card_number }}
+        <!-- Add Data Manually Button -->
+        <form action="{% url 'upload_file' %}" method="post" class="card-buttons" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary">Add Data Manually</button>
+          <input type="hidden" name="card_id" value="{{ card.id }}">
+        </form>
+        <!-- Connect Bank Button -->
+        <form action="{% url 'add_card_transaction' %}" method="post" class="card-buttons" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-info">Connect Bank</button>
+          <input type="hidden" name="card_id" value="{{ card.id }}">
+        </form>
+      </li>
       {% endfor %}
     </ul>
-    <h2>Add New Credit Card</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ card_form.as_p }}
-      <button type="submit" class="btn btn-primary">Add Card</button>
-    </form>
+    <div class="add-new-card">
+      <h2>Add New Credit Card</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ card_form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Card</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
+
 
 
 {% endblock %}

@@ -17,6 +17,9 @@ urlpatterns = [
     path("card_home/", views.card_home, name = "card_home"),
     path("add_card_transaction/", views.add_card_transaction, name = "add_card_transaction"),
     path("contact/", views.contact_page, name = "contact"),
-    path("view_card_transactions/", views.view_card_transactions, name = "view_card_transactions")
+    path("view_card_transactions/", views.view_card_transactions, name = "view_card_transactions"),
 
+
+    path('upload/', views.upload_file, name='upload_file')
 ]
+
